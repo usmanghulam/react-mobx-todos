@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { FC } from 'react';
+import Todos from './Todos/containers/todos';
+import { Context } from './ContextApi/StoreContext';
+import { useStore } from './Store/store';
+import Layout from './Layouts/layout';
+import { Store } from './Todos/interfaces';
 
-const App = () => {
+const App: FC = () => {
+  const store: Store = useStore();
   return (
-    <div>
-      Usman React App
-    </div>
+    <Context.Provider value={store}>
+      <Layout>
+        <Todos />
+      </Layout>
+    </Context.Provider>
   );
 };
 
